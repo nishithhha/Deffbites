@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEFFBITES - Food Delivery</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar">
+  <div class="logo"><span class="logo-deff">DEFF</span><span class="logo-bites">BITES</span></div>
+  <ul class="nav-links">
+    <li><button class="nav-btn active" data-page="home">HOME</button></li>
+    <li><button class="nav-btn" data-page="menu">MENU</button></li>
+    <li><button class="nav-btn" data-page="deals">DEALS</button></li>
+    <li><button class="nav-btn" data-page="about">ABOUT</button></li>
+  </ul>
+  <button class="cart-btn" data-page="cart">
+    <span class="cart-icon">🛒</span> <span id="cart-count">0</span>
+  </button>
+</nav>
+
+<!-- ============ HOME PAGE ============ -->
+<section id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-text">
+      <h1>hungry?</h1>
+      <p>made for all your cravings<br>and much more</p>
+      <button class="btn-primary" data-page="menu">Explore Now</button>
+    </div>
+    <div class="hero-images">
+      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&q=80" alt="burger">
+      <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=200&q=80" alt="fries">
+      <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=200&q=80" alt="biryani">
+      <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=200&q=80" alt="cake">
+      <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=200&q=80" alt="drink">
+      <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=200&q=80" alt="wrap">
+    </div>
+  </div>
+
+  <div class="pill-row">
+    <button class="pill active">order again</button>
+    <button class="pill">swift delivery</button>
+  </div>
+
+  <div class="restaurant-grid" id="restaurant-grid">
+    <!-- filled by script.js -->
+  </div>
+</section>
+
+<!-- ============ MENU PAGE ============ -->
+<section id="page-menu" class="page">
+  <h2 class="section-title">What are you craving?</h2>
+  <div class="craving-row" id="craving-row"></div>
+
+  <h2 class="section-title">Popular picks</h2>
+  <div class="popular-row" id="popular-row"></div>
+
+  <div class="combo-banner">
+    <div class="combo-left">
+      <span class="combo-icon">🎓</span>
+      <div>
+        <h3>Special Student Combo</h3>
+        <p>burger + fries + drink</p>
+      </div>
+    </div>
+    <div class="combo-price">
+      <span class="strike">₹399</span>
+      <span class="price-big">₹249/- only</span>
+    </div>
+    <img class="combo-img" src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=260&q=80" alt="combo">
+  </div>
+</section>
+
+<!-- ============ RESTAURANT DETAIL PAGE ============ -->
+<section id="page-restaurant" class="page">
+  <button class="back-link" data-page="home">← back to restaurants</button>
+
+  <div class="rest-banner">
+    <img class="rest-hero-img" id="rest-hero-img" src="" alt="">
+    <div class="rest-banner-overlay">
+      <div class="rest-logo" id="rest-logo"></div>
+      <div class="rest-banner-info">
+        <h1 id="rest-name"></h1>
+        <p id="rest-tag"></p>
+        <div class="rest-meta">
+          <span id="rest-rating"></span>
+          <span id="rest-time"></span>
+          <span id="rest-cost"></span>
+        </div>
+        <div class="rest-badges" id="rest-badges"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rest-body">
+    <div class="rest-main">
+      <div class="rest-tabs">
+        <button class="rest-tab active">Menu</button>
+        <button class="rest-tab">Reviews</button>
+        <button class="rest-tab">About</button>
+        <input type="text" class="rest-search" placeholder="Search in menu...">
+      </div>
+
+      <div class="rest-content">
+        <div class="rest-categories">
+          <h4>Categories</h4>
+          <ul id="rest-categories-list"></ul>
+        </div>
+        <div class="rest-items" id="rest-items-list"></div>
+      </div>
+    </div>
+
+    <div class="rest-side">
+      <div class="info-card">
+        <h4>Restaurant Info</h4>
+        <p>📍 <span id="rest-address"></span></p>
+        <p>🕒 <span id="rest-hours"></span></p>
+        <p>🛵 Fast Delivery</p>
+        <p>💳 Online Payment Available</p>
+      </div>
+      <div class="review-card">
+        <div class="review-card-head">
+          <h4>Customer Reviews</h4>
+          <a href="#">See all →</a>
+        </div>
+        <p class="review-sub">What our customers say</p>
+        <div id="reviews-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CART PAGE ============ -->
+<section id="page-cart" class="page">
+  <div class="cart-body">
+    <div class="cart-main">
+      <div class="cart-header">
+        <div>
+          <h2>🛒 Your Cart (<span id="cart-item-count">0</span> items)</h2>
+          <p class="cart-sub">Good food is just a few steps away!</p>
+        </div>
+        <button class="clear-cart-btn" id="clear-cart">🗑 Clear Cart</button>
+      </div>
+
+      <div id="cart-items-list"></div>
+
+      <div class="special-instructions">
+        <span>🍴 Add special instructions (optional)</span>
+        <span>⌄</span>
+      </div>
+
+      <h3 class="also-like-title">You might also like <a href="#">See all →</a></h3>
+      <div class="also-like-row" id="also-like-row"></div>
+    </div>
+
+    <div class="cart-side">
+      <div class="bill-card">
+        <h3>Bill Details</h3>
+        <div class="bill-row"><span>Item Total (<span id="bill-item-count">0</span> items)</span><span id="bill-item-total">₹0</span></div>
+        <div class="bill-row"><span>Delivery Fee</span><span>₹40</span></div>
+        <div class="bill-row"><span>Platform Fee</span><span>₹9</span></div>
+        <div class="bill-row"><span>GST & Other Charges</span><span id="bill-gst">₹0</span></div>
+        <hr>
+        <div class="bill-row bill-total"><span>Total Amount</span><span id="bill-total">₹0</span></div>
+        <div class="savings-banner">🏷 You are saving ₹47! <br><small>with exclusive deals</small></div>
+
+        <div class="promo-row">
+          <p>🎟 Have a promo code?</p>
+          <div class="promo-input-row">
+            <input type="text" placeholder="Enter promo code">
+            <button>Apply</button>
+          </div>
+        </div>
+
+        <button class="checkout-btn">Proceed to Checkout →</button>
+      </div>
+
+      <div class="why-card">
+        <h4>Why order from DEFFBITES?</h4>
+        <div class="why-item"><span>🛵</span><div><b>Fast & Reliable Delivery</b><p>Hot food, on time.</p></div></div>
+        <div class="why-item"><span>⭐</span><div><b>Best Deals & Discounts</b><p>Save more on your favourites.</p></div></div>
+        <div class="why-item"><span>🛡</span><div><b>Safe & Secure Payments</b><p>Multiple payment options.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
